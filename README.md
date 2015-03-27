@@ -7,6 +7,7 @@ http://geekswithblogs.net/aghausman/archive/2009/04/26/disable-special-keys-in-w
 
 https://alanbondo.wordpress.com/2008/06/22/creating-a-system-tray-app-with-c/
 
+#Yup.
 It was quite fun to write the app, feel free to copy the code.
 
 It's the tray app, that works in background, listents to registered hotkeyes n' reacts on them.
