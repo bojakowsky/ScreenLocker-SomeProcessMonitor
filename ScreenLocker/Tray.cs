@@ -14,17 +14,22 @@ namespace ScreenLocker
 {
     public partial class Tray : Form
     {
-
+        private ProcessesManager Pm;
         private NotifyIcon trayIcon;
         private ContextMenu trayMenu;
         KeyboardHook hook = new KeyboardHook();
-        
-
+        KeyboardHook hookA = new KeyboardHook();
+        private bool isStatOpen;
+        private Stats statsWindow;
         public Tray()
         {
             InitializeComponent();
             trayMenu = new ContextMenu();
+            trayMenu.MenuItems.Add("Tray manager", manageTray);
+            trayMenu.MenuItems.Add("Alt+K  -  Locker");
+            trayMenu.MenuItems.Add("Alt+I  -  Stats");
             trayMenu.MenuItems.Add("Exit", onExit);
+            
 
             trayIcon = new NotifyIcon();
             trayIcon.Text = "Locker";
@@ -36,13 +41,35 @@ namespace ScreenLocker
             // register the event that is fired after the key press.
             hook.KeyPressed +=
                 new EventHandler<KeyPressedEventArgs>(hook_KeyPressed);
-            // register the control + alt + F12 combination as hot key.
-            hook.RegisterHotKey(ScreenLocker.ModifierKeys.Alt | ScreenLocker.ModifierKeys.Control, Keys.F12);
+            hook.RegisterHotKey(ScreenLocker.ModifierKeys.Alt, Keys.K);
+
+            hookA.KeyPressed +=
+                new EventHandler<KeyPressedEventArgs>(hookA_KeyPressed);
+            hookA.RegisterHotKey(ScreenLocker.ModifierKeys.Alt, Keys.I);
+
+            Pm = new ProcessesManager();
+            isStatOpen = false;
+            statsWindow = new Stats();
+        }
+
+        void hookA_KeyPressed(object sender, KeyPressedEventArgs e)
+        {
+
+            if (!isStatOpen)
+            {
+                isStatOpen = true;
+                statsWindow.SetStats(Pm.codingGetter(), Pm.gamignGetter(), Pm.othersGetter());
+                statsWindow.ShowDialog();
+            }
+            else
+            {
+                statsWindow.Close();
+                isStatOpen = false;
+            }
         }
 
         void hook_KeyPressed(object sender, KeyPressedEventArgs e)
         {
-            // show the keys pressed in a label.
             var lockerWindow = new Locker();
             lockerWindow.ShowDialog();
         }
@@ -59,6 +86,11 @@ namespace ScreenLocker
             Application.Exit();
         }
 
+        private void manageTray(object sender, EventArgs e)
+        {
+            //Todo
+        }
+
         protected override void Dispose(bool isDisposing)
         {
             if (isDisposing)
@@ -66,6 +98,12 @@ namespace ScreenLocker
                 trayIcon.Dispose();
             }
             base.Dispose(isDisposing);
+        }
+
+        private void processesTimer_Tick(object sender, EventArgs e)
+        {
+            Pm.checkStates();
+            statsWindow.SetStats(Pm.codingGetter(), Pm.gamignGetter(), Pm.othersGetter());
         }
     }
 }

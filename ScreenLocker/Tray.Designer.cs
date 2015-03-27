@@ -29,10 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.processesTimer = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // processesTimer
+            // 
+            this.processesTimer.Enabled = true;
+            this.processesTimer.Interval = 60000;
+            this.processesTimer.Tick += new System.EventHandler(this.processesTimer_Tick);
+            // 
+            // Tray
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "Tray";
+            this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        public System.Windows.Forms.Timer processesTimer;
+
     }
 }
 
