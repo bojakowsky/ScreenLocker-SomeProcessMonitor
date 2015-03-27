@@ -81,11 +81,32 @@ namespace ScreenLocker
                 Console.Beep(1000, 100);
         }
 
+        private string password;
         
         private int attempts = 0;
+        public void ReadXML()
+        {
+            System.Xml.Serialization.XmlSerializer reader =
+                new System.Xml.Serialization.XmlSerializer(typeof(string));
+            using (var file = new System.IO.StreamReader(
+                @"YouReNotIntrestedInIt.xml"))
+            {
+                password = (string)reader.Deserialize(file);
+                file.Close();
+            }
+        }
+
         private void passwordUnlocker_Click(object sender, EventArgs e)
         {
-            if (passwordBox.Text == "123")
+            try
+            {
+                ReadXML();
+            }
+            catch (Exception)
+            {
+                password = "123";
+            }
+            if (passwordBox.Text == password)
             {
                 ProcessesChecker.Enabled = false;
                 lockerIsActive = false;

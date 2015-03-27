@@ -42,11 +42,11 @@
             // 
             this.passwordBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.passwordBox.Location = new System.Drawing.Point(361, 266);
+            this.passwordBox.Location = new System.Drawing.Point(351, 266);
             this.passwordBox.Margin = new System.Windows.Forms.Padding(30);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
-            this.passwordBox.Size = new System.Drawing.Size(216, 29);
+            this.passwordBox.Size = new System.Drawing.Size(234, 29);
             this.passwordBox.TabIndex = 0;
             // 
             // ProcessesChecker
@@ -58,10 +58,11 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.Location = new System.Drawing.Point(357, 237);
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(347, 237);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(220, 24);
+            this.label1.Size = new System.Drawing.Size(238, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Type password to unlock";
             // 
@@ -69,7 +70,7 @@
             // 
             this.passwordUnlocker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordUnlocker.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.passwordUnlocker.Location = new System.Drawing.Point(583, 237);
+            this.passwordUnlocker.Location = new System.Drawing.Point(591, 237);
             this.passwordUnlocker.Name = "passwordUnlocker";
             this.passwordUnlocker.Size = new System.Drawing.Size(86, 58);
             this.passwordUnlocker.TabIndex = 2;
@@ -81,10 +82,10 @@
             // 
             this.passwordMismatch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordMismatch.AutoSize = true;
-            this.passwordMismatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.passwordMismatch.Location = new System.Drawing.Point(361, 296);
+            this.passwordMismatch.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordMismatch.Location = new System.Drawing.Point(351, 296);
             this.passwordMismatch.Name = "passwordMismatch";
-            this.passwordMismatch.Size = new System.Drawing.Size(60, 24);
+            this.passwordMismatch.Size = new System.Drawing.Size(68, 24);
             this.passwordMismatch.TabIndex = 3;
             this.passwordMismatch.Text = "label2";
             this.passwordMismatch.Visible = false;
@@ -93,10 +94,10 @@
             // 
             this.ClockTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ClockTextBox.AutoSize = true;
-            this.ClockTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.ClockTextBox.Location = new System.Drawing.Point(820, 50);
+            this.ClockTextBox.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClockTextBox.Location = new System.Drawing.Point(810, 50);
             this.ClockTextBox.Name = "ClockTextBox";
-            this.ClockTextBox.Size = new System.Drawing.Size(79, 29);
+            this.ClockTextBox.Size = new System.Drawing.Size(86, 29);
             this.ClockTextBox.TabIndex = 4;
             this.ClockTextBox.Text = "label2";
             // 
@@ -104,10 +105,10 @@
             // 
             this.DayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DayLabel.AutoSize = true;
-            this.DayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.DayLabel.Location = new System.Drawing.Point(820, 21);
+            this.DayLabel.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DayLabel.Location = new System.Drawing.Point(810, 21);
             this.DayLabel.Name = "DayLabel";
-            this.DayLabel.Size = new System.Drawing.Size(79, 29);
+            this.DayLabel.Size = new System.Drawing.Size(86, 29);
             this.DayLabel.TabIndex = 5;
             this.DayLabel.Text = "label3";
             // 
@@ -115,7 +116,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 559);
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(999, 559);
             this.ControlBox = false;
             this.Controls.Add(this.DayLabel);
             this.Controls.Add(this.ClockTextBox);

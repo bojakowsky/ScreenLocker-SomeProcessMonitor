@@ -22,6 +22,7 @@ namespace ScreenLocker
             pCoding = c;
             pGaming = g;
             pOthers = o;
+
             foreach (string s in pCoding)
             {
                 if (!s.Equals(""))
@@ -95,46 +96,58 @@ namespace ScreenLocker
             else { }
         }
 
+        private int whereToAddInArray(string[] s)
+        {
+            int i = 0;
+            foreach (string str in s)
+            {
+                if (str.Equals(""))
+                    return i;
+                ++i;
+            }
+            return 29;
+        }
 
         public void addProcessToCoding(string process_name)
         {
-            int whereToAdd = pCoding.Count();
+            int whereToAdd = whereToAddInArray(pCoding);
             try
             {
                 pCoding[whereToAdd] = process_name;
             }
             catch (Exception)
             {
-                Array.Resize(ref pCoding, whereToAdd+1);
-                pCoding[whereToAdd] = process_name;
+                //Array.Resize(ref pCodingBuf, whereToAdd + 1);
+                //pCoding = pCodingBuf;
+                //pCoding[whereToAdd] = process_name;
             }
         }
 
         public void addProcessToGaming(string process_name)
         {
-            int whereToAdd = pGaming.Count();
+            int whereToAdd = whereToAddInArray(pGaming);
             try
             {
                 pGaming[whereToAdd] = process_name;
             }
             catch (Exception)
             {
-                Array.Resize(ref pGaming, whereToAdd+1);
-                pGaming[whereToAdd] = process_name;
+                //Array.Resize(ref pGaming, whereToAdd+1);
+                //pGaming[whereToAdd] = process_name;
             }
         }
 
         public void addProcessToOthers(string process_name)
         {
-            int whereToAdd = pOthers.Count();
+            int whereToAdd = whereToAddInArray(pOthers);
             try
             {
                 pOthers[whereToAdd] = process_name;
             }
             catch (Exception)
             {
-                Array.Resize(ref pOthers, whereToAdd+1);
-                pOthers[whereToAdd] = process_name;
+                //Array.Resize(ref pOthers, whereToAdd+1);
+                //pOthers[whereToAdd] = process_name;
             }
         }
     }

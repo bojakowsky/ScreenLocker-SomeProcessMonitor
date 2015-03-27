@@ -21,7 +21,7 @@ namespace ScreenLocker
         KeyboardHook hookA = new KeyboardHook();
         private bool isStatOpen;
         private Stats statsWindow;
-
+        bool isOptionOpened = false;
         public Tray()
         {
             InitializeComponent();
@@ -97,9 +97,14 @@ namespace ScreenLocker
 
         private void manageTray(object sender, EventArgs e)
         {
-            Options optionsWindow = new Options();
-            optionsWindow.optionsInit(ref Pm.pCoding, ref Pm.pGaming, ref Pm.pOthers, ref statsWindow);
-            optionsWindow.ShowDialog();
+            if (!isOptionOpened)
+            {
+                isOptionOpened = true;
+                Options optionsWindow = new Options();
+                optionsWindow.optionsInit(ref Pm.pCoding, ref Pm.pGaming, ref Pm.pOthers, ref statsWindow);
+                optionsWindow.ShowDialog();
+                isOptionOpened = false;
+            }
 
         }
 

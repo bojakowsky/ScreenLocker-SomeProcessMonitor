@@ -21,12 +21,19 @@ namespace ScreenLocker
         public ProcessesManager()
         {
             coding = gaming = others = 0;
-            pCoding = new string[] { "devenv", "eclipse"}; 
-            pGaming = new string[] { "csgo", "steam" };
-            pOthers = new string[] { "chrome", "firefox" };
+            pCoding = new string[30];
+            fillArray(pCoding);
+            pGaming = new string[30];
+            fillArray(pGaming);
+            pOthers = new string[30];
+            fillArray(pOthers);
         }
 
- 
+        private void fillArray(string [] s)
+        {
+            for (int i = 0 ; i < s.Length ; i++)
+                s[i] = "" ;
+        }
 
         public void checkStates()
         {

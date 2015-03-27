@@ -15,7 +15,6 @@ namespace ScreenLocker
         private string[] pCoding;
         private string[] pGaming;
         private string[] pOthers;
-
         Stats Stats;
         public Options()
         {
@@ -38,6 +37,14 @@ namespace ScreenLocker
             ProcessAddDelete p = new ProcessAddDelete(ref pCoding, ref pGaming, ref pOthers);
             p.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e) // settin password
+        {
+            ChangePassword windowCHP = new ChangePassword();
+            windowCHP.ShowDialog();
+        }
+
+        
 
 
 
