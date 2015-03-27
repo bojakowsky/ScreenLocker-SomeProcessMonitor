@@ -35,7 +35,7 @@
             // processesTimer
             // 
             this.processesTimer.Enabled = true;
-            this.processesTimer.Interval = 60000;
+            this.processesTimer.Interval = 10000;
             this.processesTimer.Tick += new System.EventHandler(this.processesTimer_Tick);
             // 
             // Tray

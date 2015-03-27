@@ -54,7 +54,6 @@ namespace ScreenLocker
             objKeyboardProcess = new LowLevelKeyboardProc(captureKey);
             ptrHook = SetWindowsHookEx(13, objKeyboardProcess, GetModuleHandle(objCurrentModule.ModuleName), 0);
             lockerIsActive = true;
-     
 
             InitializeComponent();
         }

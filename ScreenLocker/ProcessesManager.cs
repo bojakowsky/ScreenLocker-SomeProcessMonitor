@@ -7,26 +7,27 @@ using System.Threading.Tasks;
 
 namespace ScreenLocker
 {
+
+
     public class ProcessesManager
     {
-        private int coding;
-        private int gaming;
-        private int others;
+        public int coding;
+        public int gaming;
+        public int others;
 
-        private string[] pCoding;
-        private string[] pGaming;
-        private string[] pOthers;
+        public string[] pCoding;
+        public string[] pGaming;
+        public string[] pOthers;
         public ProcessesManager()
         {
             coding = gaming = others = 0;
-            pCoding = new string[] { "devenv", "eclipse" };
+            pCoding = new string[] { "devenv", "eclipse"}; 
             pGaming = new string[] { "csgo", "steam" };
             pOthers = new string[] { "chrome", "firefox" };
         }
 
-        //public void addProcess(); 
-        //ToDo
-        
+ 
+
         public void checkStates()
         {
             //var codingProcesses = GetProcesses(new[] { "devenv","eclipse" });
@@ -52,21 +53,6 @@ namespace ScreenLocker
 
             return processes;
         }
-
-        public int codingGetter()
-        {
-            return coding;
-        }
-
-        public int gamignGetter()
-        {
-            return gaming;
-        }
-
-        public int othersGetter()
-        {
-            return others;
-        }
-
+ 
     }
 }

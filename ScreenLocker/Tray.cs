@@ -21,6 +21,7 @@ namespace ScreenLocker
         KeyboardHook hookA = new KeyboardHook();
         private bool isStatOpen;
         private Stats statsWindow;
+
         public Tray()
         {
             InitializeComponent();
@@ -46,10 +47,18 @@ namespace ScreenLocker
             hookA.KeyPressed +=
                 new EventHandler<KeyPressedEventArgs>(hookA_KeyPressed);
             hookA.RegisterHotKey(ScreenLocker.ModifierKeys.Alt, Keys.I);
+            statsWindow = new Stats();
 
             Pm = new ProcessesManager();
+            try
+            {
+                ReadXML();
+            }
+            catch (Exception)
+            {
+                WriteXML();
+            }
             isStatOpen = false;
-            statsWindow = new Stats();
         }
 
         void hookA_KeyPressed(object sender, KeyPressedEventArgs e)
@@ -58,7 +67,7 @@ namespace ScreenLocker
             if (!isStatOpen)
             {
                 isStatOpen = true;
-                statsWindow.SetStats(Pm.codingGetter(), Pm.gamignGetter(), Pm.othersGetter());
+                statsWindow.SetStats(Pm.coding, Pm.gaming, Pm.others);
                 statsWindow.ShowDialog();
             }
             else
@@ -88,7 +97,10 @@ namespace ScreenLocker
 
         private void manageTray(object sender, EventArgs e)
         {
-            //Todo
+            Options optionsWindow = new Options();
+            optionsWindow.optionsInit(ref Pm.pCoding, ref Pm.pGaming, ref Pm.pOthers, ref statsWindow);
+            optionsWindow.ShowDialog();
+
         }
 
         protected override void Dispose(bool isDisposing)
@@ -103,7 +115,38 @@ namespace ScreenLocker
         private void processesTimer_Tick(object sender, EventArgs e)
         {
             Pm.checkStates();
-            statsWindow.SetStats(Pm.codingGetter(), Pm.gamignGetter(), Pm.othersGetter());
+            statsWindow.SetStats(Pm.coding, Pm.gaming, Pm.others);
+            WriteXML();
         }
+
+        public void WriteXML()
+        {
+            System.Xml.Serialization.XmlSerializer writer =
+                new System.Xml.Serialization.XmlSerializer(typeof(ProcessesManager));
+
+            using (var file = new System.IO.StreamWriter(
+                @"SuperbImportantData.xml"))
+            {
+                writer.Serialize(file, Pm);
+
+                file.Close();
+            }
+        }
+
+        public void ReadXML()
+        {
+            System.Xml.Serialization.XmlSerializer reader =
+                new System.Xml.Serialization.XmlSerializer(typeof(ProcessesManager));
+            using (var file = new System.IO.StreamReader(
+                @"SuperbImportantData.xml"))
+            {
+                Pm = (ProcessesManager)reader.Deserialize(file);
+                file.Close();
+            }
+            statsWindow.SetStats(Pm.coding, Pm.gaming, Pm.others);
+
+
+        }
+
     }
 }

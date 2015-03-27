@@ -29,6 +29,9 @@ namespace ScreenLocker
             timeCoding = cod;
             timeGaming = gam;
             timeOthers = oth;
+            codingLabel.Text = "" + timeCoding;
+            gamingLabel.Text = "" + timeGaming;
+            othersLabel.Text = "" + timeOthers;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
